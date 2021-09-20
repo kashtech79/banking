@@ -18,8 +18,6 @@ public class User Implements UserDetails {
     private String password;
     private String firstName;
     private String lastName;
-
-    @Column(name = "email", nullable = false, unique = true)
     private String email;
     private String phone;
 
