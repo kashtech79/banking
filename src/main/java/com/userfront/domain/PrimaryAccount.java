@@ -19,5 +19,5 @@ public class PrimaryAccount {
     private int accountNumber;
     private BigDecimal accountBalance;
     @OneToMany(mappedBy = "primaryAccount", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<PrimaryTransaction> primaryTransaction;
+    private List<PrimaryTransaction> primaryTransactionList;
 }
