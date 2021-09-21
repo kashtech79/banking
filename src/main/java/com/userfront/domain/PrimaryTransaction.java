@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -27,6 +24,8 @@ public class PrimaryTransaction {
     private String status;
     private double amount;
     private BigDecimal availableBalance;
-    private PrimaryAccount primaryAccount
+    @ManyToOne
+    @JoinColumn(name = "primary_account_id")
+    private PrimaryAccount primaryAccount;
 
 }
