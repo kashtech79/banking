@@ -3,6 +3,7 @@ package com.userfront.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,6 +12,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
