@@ -1,6 +1,8 @@
 package com.userfront.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.userfront.domain.security.UserRole;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,11 +13,13 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,6 +46,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Recipient> recipientList;
 
+    @JsonIgnore
+    private Set<UserRole> userRoles = new HashSet<>();
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -62,6 +69,5 @@ public class User implements UserDetails {
         return false;
     }
 
-//    @JsonIgnore
-//    private Set<UserRole> userRoles = new HashSet<>();
+
 }
