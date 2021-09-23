@@ -7,14 +7,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Getter
 @Setter
+@Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,8 +43,10 @@ public class User implements UserDetails {
     private List<Recipient> recipientList;
 
     @JsonIgnore
-    @ElementCollection(targetClass=UserRole.class)
+    @Transient
+//    @ElementCollection(targetClass=UserRole.class)
     private Set<UserRole> userRoles = new HashSet<>();
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

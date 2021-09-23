@@ -6,8 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Data
 @Getter
 @Setter
@@ -17,11 +16,6 @@ public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userRoleId;
-
-    public UserRole(User user, Role role) {
-        this.user = user;
-        this.role = role;
-    }
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -33,5 +27,11 @@ public class UserRole {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    public UserRole() {
+    }
 
+    public UserRole(User user, Role role) {
+        this.user = user;
+        this.role = role;
+    }
 }
