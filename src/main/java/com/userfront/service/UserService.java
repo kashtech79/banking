@@ -1,8 +1,10 @@
 package com.userfront.service;
 
 import com.userfront.domain.User;
+import com.userfront.domain.security.UserRole;
 
 import java.util.List;
+import java.util.Set;
 
 public interface UserService {
     User findByUsername(String username);
@@ -16,6 +18,8 @@ public interface UserService {
     boolean checkEmailExists(String email);
 
     void save (User user);
+
+    User createUser(User user, Set<UserRole> userRoles);
 
 
 }

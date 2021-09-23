@@ -2,10 +2,7 @@ package com.userfront.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.userfront.domain.security.UserRole;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,6 +17,7 @@ import java.util.Set;
 @Setter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,6 +45,7 @@ public class User implements UserDetails {
     private List<Recipient> recipientList;
 
     @JsonIgnore
+    @ElementCollection(targetClass=UserRole.class)
     private Set<UserRole> userRoles = new HashSet<>();
 
     @Override

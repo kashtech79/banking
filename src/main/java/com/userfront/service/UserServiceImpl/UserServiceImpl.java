@@ -4,6 +4,7 @@ import com.userfront.dao.RoleDao;
 import com.userfront.dao.UserDao;
 import com.userfront.domain.User;
 import com.userfront.domain.security.UserRole;
+import com.userfront.service.AccountService;
 import com.userfront.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,7 @@ import java.util.Set;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    private static final Logger LOG = LoggerFactory.getLogger((UserService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     private UserDao userDao;
@@ -29,6 +30,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AccountService accountService;
 
     public void save(User user) {
         userDao.save(user);

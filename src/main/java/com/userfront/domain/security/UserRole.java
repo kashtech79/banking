@@ -1,20 +1,19 @@
 package com.userfront.domain.security;
 
 import com.userfront.domain.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Getter
 @Setter
 @Table(name="user_role")
 public class UserRole {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userRoleId;
@@ -33,4 +32,6 @@ public class UserRole {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     private Role role;
+
+
 }
