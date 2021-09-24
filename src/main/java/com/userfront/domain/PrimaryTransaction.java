@@ -1,19 +1,15 @@
 package com.userfront.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class PrimaryTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,5 +23,18 @@ public class PrimaryTransaction {
     @ManyToOne
     @JoinColumn(name = "primary_account_id")
     private PrimaryAccount primaryAccount;
+
+    public PrimaryTransaction() {
+    }
+
+    public PrimaryTransaction(Date date, String description, String type, String status, double amount, BigDecimal availableBalance, PrimaryAccount primaryAccount) {
+        this.date = date;
+        this.description = description;
+        this.type = type;
+        this.status = status;
+        this.amount = amount;
+        this.availableBalance = availableBalance;
+        this.primaryAccount = primaryAccount;
+    }
 
 }

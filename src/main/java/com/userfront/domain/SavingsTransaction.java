@@ -11,7 +11,6 @@ import java.util.Date;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 public class SavingsTransaction {
@@ -29,4 +28,13 @@ public class SavingsTransaction {
     @JoinColumn(name = "savings_account_id")
     private SavingsAccount savingsAccount;
 
+    public SavingsTransaction(Date date, String description, String type, String status, double amount, BigDecimal availableBalance, SavingsAccount savingsAccount) {
+        this.date = date;
+        this.description = description;
+        this.type = type;
+        this.status = status;
+        this.amount = amount;
+        this.availableBalance = availableBalance;
+        this.savingsAccount = savingsAccount;
+    }
 }
